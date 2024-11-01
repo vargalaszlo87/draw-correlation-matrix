@@ -62,6 +62,21 @@ const drawCorrelationMatrix = {
         }
     },
 
+    checkInputMatrix: (matrix) => {
+        return matrix.length >= 3 && matrix.every(row => row.length >= 3);
+    },
+
+    checkVectorAndMatrix: (matrix, labels) => {
+        const isSquare = matrix.every(row => row.length === matrix.length);
+        const matchesLabels = matrix.length === labels.length;
+        return isSquare && matchesLabels;
+    },
+
+    checkCorrelationMatrix: (matrix, min = -1, max = 1) => {
+        return matrix.every(row => 
+            row.every(value => typeof value === "number" && value >= min && value <= max)
+        );
+    },
     drawLegend(N) {
         const legendWidth = this.cellSize / 2; 
         const legendX = this.canvas.width - legendWidth - 10; 
@@ -120,11 +135,22 @@ const drawCorrelationMatrix = {
     },
 
     chart (canvasName = "corrMatrixCanvas", N = 1, labels, datas) {
+        // pre-check
         // N is min 3
-        if (N < 3)
+        if (N < 3 || labels.length < 3 || !this.checkInputMatrix(datas))
             return;
-        // set canvas
+        // check size of vector and matrix
+        if (!this.checkVectorAndMatrix(datas, labels))
+            return;
+        // check the type and range of the input matrix
+        if (!this.checkCorrelationMatrix(datas))
+            return;
+        // set and check canvas
         this.canvas = document.getElementById(canvasName);
+        if (!this.canvas)
+            return;
+        // end pre-check
+        // set sizes
         this.canvas.width = this.labelMargin + N * this.cellSize + this.cellSize * 1.25;
         this.canvas.height = this.labelMargin + N * this.cellSize + 1;
         this.ctx = this.canvas.getContext("2d");
