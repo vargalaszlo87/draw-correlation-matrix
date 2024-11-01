@@ -21,8 +21,13 @@ Draw correlation matrix in pure JavaScript. This is an easy way you can show you
 ```properties
 │
 |
+├── tests/
+│   └── draw-correlation-matrix.test.js
+|
 ├── draw-correlation-matrix.js
-└── example.html
+├── example.html
+├── package.json
+└── README.md
 ```
 
 ## ✨Getting started / Usage
