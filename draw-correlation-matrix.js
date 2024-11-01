@@ -169,3 +169,5 @@ const drawCorrelationMatrix = {
         this.drawLegend(N);
     },
 };
+
+module.exports = drawCorrelationMatrix;
