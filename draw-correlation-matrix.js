@@ -170,4 +170,7 @@ const drawCorrelationMatrix = {
     },
 };
 
-module.exports = drawCorrelationMatrix;
+// for tests
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = drawCorrelationMatrix;
+}
