@@ -2,6 +2,8 @@
 
 Draw correlation matrix in pure JavaScript. This is an easy way you can show your correlation matrix in a web app.
 
+![Képkivágás](https://github.com/user-attachments/assets/9495978c-fe0b-4e92-acc7-f4539fbd9993)
+
 ## 🚀 Features
 
 **`_canvasName_`**
