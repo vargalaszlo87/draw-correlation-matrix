@@ -1,4 +1,4 @@
-const drawCorrelationMatrix = require('./draw-correlation-matrix');
+const drawCorrelationMatrix = require('../draw-correlation-matrix');
 
 // Tesztadatok
 const validMatrix = [
